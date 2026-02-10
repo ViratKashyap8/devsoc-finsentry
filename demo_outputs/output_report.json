@@ -1,0 +1,33 @@
+{
+  "call_id": "2466673c-08d9-4716-9ef4-fca8139256fb",
+  "full_transcript": "I am paying Sudarshan traders 55,000 rupees in cash today in the e-mail.",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.44,
+      "text": "I am paying Sudarshan traders 55,000 rupees in cash today in the e-mail.",
+      "intent": "general",
+      "intent_confidence": 0.5,
+      "entities": [],
+      "obligations": [],
+      "regulatory_phrases": [],
+      "emotion": "neutral",
+      "emotion_confidence": 0.5,
+      "stress_score": 0.5
+    }
+  ],
+  "call_metrics": {
+    "dominant_intent": "general",
+    "overall_risk_level": "none",
+    "risk_score": 0.0,
+    "risk_factors": [],
+    "total_obligations": 0,
+    "obligation_summary": [],
+    "stress_trend": null,
+    "regulatory_compliance_score": 1.0
+  },
+  "all_entities": [],
+  "all_obligations": [],
+  "all_regulatory": [],
+  "processing_time_sec": 0.0
+}

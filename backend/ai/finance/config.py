@@ -13,10 +13,10 @@ from typing import Literal
 INTENT_EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"  # 80MB, fast
 
 # Entity/Obligation extraction: instruction-tuned small LLM
-# Options: "HuggingFaceH4/smollm2-360m-instruct" | "Qwen/Qwen2-0.5B-Instruct" | "microsoft/Phi-2"
-EXTRACTION_MODEL = "HuggingFaceH4/smollm2-360m-instruct"  # 360M, ~2GB VRAM
+# Options: "HuggingFaceTB/SmolLM2-360M-Instruct" | "Qwen/Qwen2-0.5B-Instruct" | "microsoft/Phi-2"
+EXTRACTION_MODEL = "HuggingFaceTB/SmolLM2-360M-Instruct"  # 360M, ~2GB VRAM
 # Fallback for CPU-only: same model, slower
-EXTRACTION_MODEL_CPU = "HuggingFaceH4/smollm2-360m-instruct"
+EXTRACTION_MODEL_CPU = "HuggingFaceTB/SmolLM2-360M-Instruct"
 
 # RAG: embeddings + retrieval
 RAG_EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"

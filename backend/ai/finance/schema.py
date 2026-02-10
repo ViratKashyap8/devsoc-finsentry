@@ -142,4 +142,8 @@ class FinanceAnalysisOutput(BaseModel):
     all_obligations: list[Obligation] = Field(default_factory=list)
     all_regulatory: list[RegulatoryPhrase] = Field(default_factory=list)
     processing_time_sec: float = 0.0
+    # Optional STT metadata for end-to-end audio + finance flows
+    detected_language: str | None = None
+    language_probability: float | None = None
+    avg_logprob: float | None = None
     model_config = ConfigDict(frozen=False)

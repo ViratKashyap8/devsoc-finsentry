@@ -56,7 +56,7 @@ async def analyze_transcript(req: AnalyzeRequest):
 
     Returns intent, entities, obligations, risk, emotion per segment and call-level metrics.
     """
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
     try:
         from ai.finance.pipeline import FinancePipeline
         pipeline = FinancePipeline(use_llm_extraction=req.use_llm_extraction)
@@ -79,7 +79,7 @@ async def analyze_transcript(req: AnalyzeRequest):
 @router.post("/rag/query")
 async def rag_query(req: RAGQueryRequest):
     """RAG Q&A over finance documents."""
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
     try:
         gen = _get_rag()
         result = await loop.run_in_executor(

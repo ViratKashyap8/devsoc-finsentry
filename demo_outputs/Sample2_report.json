@@ -1,0 +1,72 @@
+{
+  "call_id": "1ad43222-8254-4cfe-9f89-91a1e349b541",
+  "full_transcript": "रहम से जने किजल्ता हो इकन अचना है। � Jinkinaha Saar kg ये अभप़ लान जिवने अप़स रहने एक रहम से जना जराह अपने जना हो उन रहला व़ता हों है। नौप माना ऐक तो सको वाःंणा है।",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.88,
+      "text": "रहम से जने किजल्ता हो इकन अचना है।",
+      "intent": "general",
+      "intent_confidence": 0.5,
+      "entities": [],
+      "obligations": [],
+      "regulatory_phrases": [],
+      "emotion": "neutral",
+      "emotion_confidence": 0.5,
+      "stress_score": 0.5
+    },
+    {
+      "start": 3.48,
+      "end": 8.12,
+      "text": "� Jinkinaha Saar kg",
+      "intent": "general",
+      "intent_confidence": 0.5,
+      "entities": [],
+      "obligations": [],
+      "regulatory_phrases": [],
+      "emotion": "neutral",
+      "emotion_confidence": 0.5,
+      "stress_score": 0.5
+    },
+    {
+      "start": 9.88,
+      "end": 14.4,
+      "text": "ये अभप़ लान जिवने अप़स रहने एक रहम से जना जराह अपने जना हो उन रहला व़ता हों है।",
+      "intent": "general",
+      "intent_confidence": 0.5,
+      "entities": [],
+      "obligations": [],
+      "regulatory_phrases": [],
+      "emotion": "neutral",
+      "emotion_confidence": 0.5,
+      "stress_score": 0.5
+    },
+    {
+      "start": 14.6,
+      "end": 18.24,
+      "text": "नौप माना ऐक तो सको वाःंणा है।",
+      "intent": "general",
+      "intent_confidence": 0.5,
+      "entities": [],
+      "obligations": [],
+      "regulatory_phrases": [],
+      "emotion": "neutral",
+      "emotion_confidence": 0.5,
+      "stress_score": 0.5
+    }
+  ],
+  "call_metrics": {
+    "dominant_intent": "general",
+    "overall_risk_level": "none",
+    "risk_score": 0.0,
+    "risk_factors": [],
+    "total_obligations": 0,
+    "obligation_summary": [],
+    "stress_trend": "stable",
+    "regulatory_compliance_score": 1.0
+  },
+  "all_entities": [],
+  "all_obligations": [],
+  "all_regulatory": [],
+  "processing_time_sec": 0.0
+}

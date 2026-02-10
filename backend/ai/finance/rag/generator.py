@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 _generator_model_cache: tuple = ()
 
 
-def _get_generator(model_id: str = "HuggingFaceH4/smollm2-360m-instruct"):
+def _get_generator(model_id: str = "HuggingFaceTB/SmolLM2-360M-Instruct"):
     global _generator_model_cache
     if not _generator_model_cache:
         try:
@@ -55,7 +55,7 @@ class RAGGenerator:
     def __init__(
         self,
         retriever: Any,
-        model_id: str = "HuggingFaceH4/smollm2-360m-instruct",
+        model_id: str = "HuggingFaceTB/SmolLM2-360M-Instruct",
     ):
         self.retriever = retriever
         self.model_id = model_id

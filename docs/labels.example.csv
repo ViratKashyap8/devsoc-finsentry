@@ -1,0 +1,4 @@
+call_id,amount,currency,merchant,payment_method,transaction_date,intent,risk_level
+call_001,150.00,USD,Acme Corp,card,2025-01-15,dispute,high
+call_002,,,,,,inquiry,low
+call_003,25.00,USD,Fee Waiver,,,payment_arrangement,medium

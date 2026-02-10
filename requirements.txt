@@ -1,0 +1,32 @@
+# FinSentry backend dependencies (canonical pip list; must match backend/pyproject.toml).
+# Install with venv active: pip install -r requirements.txt  (from repo root or backend).
+# First install may take several minutes (torch/transformers). OS deps: see README.
+
+# Core & env
+python-dotenv>=1.0.0
+pydantic>=2.0
+
+# Backend framework
+fastapi[standard]>=0.128.5
+uvicorn[standard]>=0.30.0
+httpx>=0.27.0
+tenacity>=8.2.0
+
+# Audio pipeline (AI-1); OS: ffmpeg on PATH; Linux may need libsndfile1 for soundfile
+librosa>=0.10.0
+scipy>=1.11.0
+noisereduce>=3.0.0
+faster-whisper>=1.0.0
+soundfile>=0.12.0
+
+# Finance / NLP / LLM (AI-2)
+sentence-transformers>=2.2.0
+transformers>=4.36.0
+torch>=2.0.0
+accelerate>=0.25.0
+faiss-cpu>=1.7.4
+numpy>=1.24.0
+datasets>=2.14.0
+python-docx>=1.2.0
+peft>=0.18.1
+trl>=0.27.2

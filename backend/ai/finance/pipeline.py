@@ -7,6 +7,7 @@ Orchestrates intent, emotion, entity, obligation, regulatory, risk.
 from __future__ import annotations
 
 import logging
+import re
 import time
 from typing import Optional
 
@@ -235,6 +236,9 @@ def run_finance_analysis(
     segments: Optional[list[dict]] = None,
     call_id: str = "unknown",
     use_llm_extraction: bool = True,
+    detected_language: str | None = None,
+    language_probability: float | None = None,
+    avg_logprob: float | None = None,
 ) -> FinanceAnalysisOutput:
     """
     Convenience function to run full finance analysis.
@@ -249,4 +253,71 @@ def run_finance_analysis(
         FinanceAnalysisOutput
     """
     pipeline = FinancePipeline(use_llm_extraction=use_llm_extraction)
-    return pipeline.analyze(full_transcript, segments, call_id)
+    output = pipeline.analyze(full_transcript, segments, call_id)
+    # attach STT meta when available
+    output.detected_language = detected_language
+    output.language_probability = language_probability
+    output.avg_logprob = avg_logprob
+
+    # Light-weight retry: if transcript looks financial but intent is too generic,
+    # normalize currency formats and Hindi numerals, then re-run once.
+    def _has_financial_signals(text: str) -> bool:
+        if not text:
+            return False
+        if any(ch in text for ch in ["₹", "रु", "Rs", "rs", "rupees", "rupay"]):
+            return True
+        # Hindi digits ०१२३४५६७८९
+        if re.search(r"[०१२३४५६७८९]", text):
+            return True
+        # Amount-like patterns
+        return bool(re.search(r"\d[\d,\.]*\s*(INR|rs|rupees)", text, flags=re.IGNORECASE))
+
+    dominant_intent = output.call_metrics.dominant_intent
+    if (
+        (dominant_intent is None or dominant_intent == IntentLabel.GENERAL)
+        and _has_financial_signals(full_transcript)
+    ):
+        logger.info("Retrying finance analysis with cleaned numeric/currency text")
+
+        def _normalize_hindi_digits(s: str) -> str:
+            mapping = {
+                "०": "0",
+                "१": "1",
+                "२": "2",
+                "३": "3",
+                "४": "4",
+                "५": "5",
+                "६": "6",
+                "७": "7",
+                "८": "8",
+                "९": "9",
+            }
+            return "".join(mapping.get(ch, ch) for ch in s)
+
+        def _clean_currency(s: str) -> str:
+            # Normalize rupee symbols/words and strip commas inside numbers.
+            s = s.replace("₹", " Rs ")
+            s = re.sub(r"\bरु\.?", " Rs ", s)
+            s = re.sub(r"\brupees?\b", " Rs ", s, flags=re.IGNORECASE)
+            # Remove thousands separators inside numbers (e.g., 1,23,456 -> 123456)
+            s = re.sub(r"(?<=\d),(?=\d)", "", s)
+            s = _normalize_hindi_digits(s)
+            return s
+
+        cleaned_full = _clean_currency(full_transcript)
+        cleaned_segments = None
+        if segments:
+            cleaned_segments = []
+            for seg in segments:
+                seg_copy = dict(seg)
+                seg_copy["text"] = _clean_currency(seg_copy.get("text", ""))
+                cleaned_segments.append(seg_copy)
+
+        retry_output = pipeline.analyze(cleaned_full, cleaned_segments, call_id)
+        retry_output.detected_language = detected_language
+        retry_output.language_probability = language_probability
+        retry_output.avg_logprob = avg_logprob
+        if retry_output.call_metrics.dominant_intent and retry_output.call_metrics.dominant_intent != IntentLabel.GENERAL:
+            return retry_output
+
+    return output

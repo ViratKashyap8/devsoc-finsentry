@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 _extraction_model_cache: Any = None
 
 
-def _get_extraction_model(model_id: str = "HuggingFaceH4/smollm2-360m-instruct"):
+def _get_extraction_model(model_id: str = "HuggingFaceTB/SmolLM2-360M-Instruct"):
     """Lazy-load extraction LLM."""
     global _extraction_model_cache
     if _extraction_model_cache is None:
@@ -106,7 +106,7 @@ def _parse_json_array(raw: str) -> list[dict]:
 
 def extract_entities(
     text: str,
-    model_id: str = "HuggingFaceH4/smollm2-360m-instruct",
+    model_id: str = "HuggingFaceTB/SmolLM2-360M-Instruct",
 ) -> list[FinancialEntity]:
     """Extract financial entities from transcript segment."""
     if not text.strip():
@@ -148,7 +148,7 @@ def _fallback_entity_extraction(text: str) -> list[FinancialEntity]:
 
 def extract_obligations(
     text: str,
-    model_id: str = "HuggingFaceH4/smollm2-360m-instruct",
+    model_id: str = "HuggingFaceTB/SmolLM2-360M-Instruct",
 ) -> list[Obligation]:
     """Extract obligations/promises from transcript segment."""
     if not text.strip():
@@ -182,7 +182,7 @@ def extract_obligations(
 
 def extract_regulatory_phrases(
     text: str,
-    model_id: str = "HuggingFaceH4/smollm2-360m-instruct",
+    model_id: str = "HuggingFaceTB/SmolLM2-360M-Instruct",
 ) -> list[RegulatoryPhrase]:
     """Extract regulatory/compliance phrases."""
     phrases = _rule_based_regulatory(text)

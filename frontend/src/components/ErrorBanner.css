@@ -1,0 +1,34 @@
+.error-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  color: #fecaca;
+  margin-bottom: 1rem;
+}
+
+.error-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.error-banner-icon {
+  font-size: 1.1rem;
+}
+
+.error-banner-text {
+  font-size: 0.9rem;
+}
+
+.error-banner-close {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+

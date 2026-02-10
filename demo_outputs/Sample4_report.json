@@ -1,0 +1,46 @@
+{
+  "call_id": "d7ffedf6-fc4c-4ea6-88ae-95547d8374f5",
+  "full_transcript": ".. haircuteness, ...",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.54,
+      "text": ".. haircuteness,",
+      "intent": "general",
+      "intent_confidence": 0.5,
+      "entities": [],
+      "obligations": [],
+      "regulatory_phrases": [],
+      "emotion": "neutral",
+      "emotion_confidence": 0.5,
+      "stress_score": 0.5
+    },
+    {
+      "start": 4.24,
+      "end": 29.2,
+      "text": "...",
+      "intent": "general",
+      "intent_confidence": 0.5,
+      "entities": [],
+      "obligations": [],
+      "regulatory_phrases": [],
+      "emotion": "neutral",
+      "emotion_confidence": 0.5,
+      "stress_score": 0.5
+    }
+  ],
+  "call_metrics": {
+    "dominant_intent": "general",
+    "overall_risk_level": "none",
+    "risk_score": 0.0,
+    "risk_factors": [],
+    "total_obligations": 0,
+    "obligation_summary": [],
+    "stress_trend": null,
+    "regulatory_compliance_score": 1.0
+  },
+  "all_entities": [],
+  "all_obligations": [],
+  "all_regulatory": [],
+  "processing_time_sec": 0.0
+}
